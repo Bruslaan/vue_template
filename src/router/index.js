@@ -17,8 +17,21 @@ const routes = [
       name: 'Dashboard',
       component: () => import('../views/Home'),
       meta: { title: 'Dashboard', icon: 'dashboard' }
-    }]
+    },
+    {
+      path: '/test',
+      name: 'Form',
+      component: () => import('../views/test'),
+      meta: { title: 'Form', icon: 'form' }
+
+    },
+    ]
   },
+
+
+
+
+
   {
     path: '/login',
     name: 'login',

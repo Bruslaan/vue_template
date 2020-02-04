@@ -1,13 +1,13 @@
 <template>
   <v-app>
-    <Drawer v-model="drawer"/>
+    <Drawer v-model="drawer" />
     <v-app-bar app absolute color="white" elevate-on-scroll>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <!-- <v-toolbar-title>Title</v-toolbar-title> -->
       <v-spacer></v-spacer>
       <!-- <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
-      </v-btn> -->
+      </v-btn>-->
 
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
@@ -31,7 +31,7 @@
       <!-- Provides the application the proper gutter -->
       <v-container fluid>
         <!-- If using vue-router -->
-        <router-view></router-view>
+        <router-view :key="key" />
       </v-container>
     </v-content>
 
@@ -44,14 +44,17 @@
 <script>
 import Drawer from "./drawer";
 export default {
-  
-  data(){
-    return{
-      drawer: true,
-    }
+  data() {
+    return {
+      drawer: true
+    };
   },
   components: { Drawer },
-
+  computed: {
+    key() {
+      return this.$route.path;
+    }
+  },
   methods: {
     async logout() {
       await this.$store.dispatch("user/logout");
