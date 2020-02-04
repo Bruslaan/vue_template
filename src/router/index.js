@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+// import Home from '../views/Home.vue'
+import Layout from '../layout/index'
 import Login from '../views/LoginPage.vue'
 
 Vue.use(VueRouter)
@@ -9,13 +10,26 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    component: Layout,
+    redirect: '/dashboard',
+    children: [{
+      path: 'dashboard',
+      name: 'Dashboard',
+      component: () => import('../views/Home'),
+      meta: { title: 'Dashboard', icon: 'dashboard' }
+    }]
   },
   {
     path: '/login',
     name: 'login',
     hidden: true,
     component: Login
+  },
+  { path: '*', redirect: '/404', hidden: true },
+  {
+    path: '/404',
+    component: () => import('../views/404'),
+    hidden: true
   },
 
 ]

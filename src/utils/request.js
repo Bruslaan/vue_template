@@ -65,7 +65,7 @@ service.interceptors.response.use(
         //     location.reload()
         //   })
         // })
-        console.log("ou have been logged out, you can cancel to stay on this page")
+        console.log("you have been logged out, you can cancel to stay on this page")
       }
       return Promise.reject(new Error(res.message || 'Error'))
     } else {

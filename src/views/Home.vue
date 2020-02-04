@@ -1,11 +1,10 @@
 <template>
   <div class="home">
-  <v-btn @click="logout">Logout</v-btn>
-  <h1>{{$store.getters.name}}</h1>
-  <h1>User: {{$store.getters["user/name"]}}</h1>
-  <h1>Token: {{$store.getters["user/token"]}}</h1>
-  <!-- <h1> {{$store.getters["user/avatar"]}}</h1> -->
-  <h1>Setting: {{$store.getters.fixedHeader}}</h1>
+  <p>{{$store.getters.name}}</p>
+  <p>User: {{$store.getters["user/name"]}}</p>
+  <p>Token: {{$store.getters["user/token"]}}</p>
+  <!-- <p> {{$store.getters["user/avatar"]}}</p> -->
+  <p>Setting: {{$store.getters.fixedHeader}}</p>
   </div>
 </template>
 
@@ -14,13 +13,6 @@
 
 export default {
   name: "home",
-    methods: {
-
-    async logout() {
-      await this.$store.dispatch('user/logout')
-      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
-    }
-  },
   components: {}
 };
 </script>
