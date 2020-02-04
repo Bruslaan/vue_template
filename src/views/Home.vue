@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
+  
     <h1>Hallo</h1>
+  <v-btn @click="logout">Logout</v-btn>
   </div>
 </template>
 
@@ -10,6 +11,13 @@
 
 export default {
   name: "home",
+    methods: {
+
+    async logout() {
+      await this.$store.dispatch('user/logout')
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+    }
+  },
   components: {}
 };
 </script>

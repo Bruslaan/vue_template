@@ -8,6 +8,8 @@ import vuetify from './plugins/vuetify';
 // before Each here
 import './permission'
 
+const { mockXHR } = require('../mock')
+mockXHR()
 Vue.config.productionTip = false
 
 new Vue({
