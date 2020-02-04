@@ -8,7 +8,7 @@
               <v-card-text>
                 <v-form>
                   <h1 class="my-5">Vanilla</h1>
-                  <v-text-field v-model="email" label="Login" name="login" type="text" />
+                  <v-text-field v-model="username" label="Login" name="login" type="text" />
 
                   <v-text-field
                     v-model="password"
@@ -36,30 +36,35 @@
 export default {
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
       errorMessage: "",
-      loading: false
+      loading: false,
+      redirect: undefined
     };
+  },
+  watch: {
+    $route: {
+      handler: function(route) {
+        this.redirect = route.query && route.query.redirect;
+      },
+      immediate: true
+    }
   },
   methods: {
     loginUser() {
       this.loading = true;
-      let self = this
-      self.$store
-        .dispatch("loginUser", { email: this.email, password: this.password })
-        .then(user => {
-          self.$store.dispatch("setUser", user);
-          self.$router.replace("home");
+      let self = this;
+
+      this.$store
+        .dispatch("user/login", {username: self.username, password: self.password})
+        .then(() => {
+          self.$router.push({ path: self.redirect || "/" });
           self.loading = false;
         })
-        .catch(function(error) {
-          window.console.log("Error getting documents: ", error);
-          self.errorMessage = error
-           self.loading = false;
+        .catch(() => {
+          self.loading = false;
         });
-
-     
     }
   }
 };
