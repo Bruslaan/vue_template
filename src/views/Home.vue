@@ -5,7 +5,7 @@
   <h1>User: {{$store.getters["user/name"]}}</h1>
   <h1>Token: {{$store.getters["user/token"]}}</h1>
   <!-- <h1> {{$store.getters["user/avatar"]}}</h1> -->
-  <h1>Setting: {{$store.getters["settings/fixedHeader"]}}</h1>
+  <h1>Setting: {{$store.getters.fixedHeader}}</h1>
   </div>
 </template>
 
