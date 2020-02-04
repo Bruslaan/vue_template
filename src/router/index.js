@@ -28,10 +28,18 @@ const routes = [
     ]
   },
 
-
-
-
-
+  {
+    path: '/test',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Form',
+        component: () => import('../views/test'),
+        meta: { title: 'Form', icon: 'form' }
+      }
+    ]
+  },
   {
     path: '/login',
     name: 'login',
