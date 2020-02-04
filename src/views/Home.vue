@@ -1,8 +1,11 @@
 <template>
   <div class="home">
-  
-    <h1>Hallo</h1>
   <v-btn @click="logout">Logout</v-btn>
+  <h1>{{$store.getters.name}}</h1>
+  <h1>User: {{$store.getters["user/name"]}}</h1>
+  <h1>Token: {{$store.getters["user/token"]}}</h1>
+  <!-- <h1> {{$store.getters["user/avatar"]}}</h1> -->
+  <h1>Setting: {{$store.getters["settings/fixedHeader"]}}</h1>
   </div>
 </template>
 

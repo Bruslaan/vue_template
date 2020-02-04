@@ -14,9 +14,9 @@ const getDefaultState = () => {
 const state = getDefaultState()
 
 const getters = {
-  token: state => state.user.token,
-  avatar: state => state.user.avatar,
-  name: state => state.user.name
+  token: state => state.token,
+  avatar: state => state.avatar,
+  name: state => state.name
 }
 
 const mutations = {
