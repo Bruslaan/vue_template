@@ -16,19 +16,20 @@
     <v-divider></v-divider>
 
     <v-list dense>
-      <v-list-item v-for="item in items" :key="item.title" :to="item.to">
-        <v-list-item-icon>
-          <v-icon>{{ item.icon }}</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
+      <ListItem v-for="route in routes" :key="route.path" :item="route"  :base-path="route.path" />
     </v-list>
   </v-navigation-drawer>
 </template>
 <script>
+import ListItem from "./drawer_list_item";
 export default {
+  components: { ListItem },
+  computed: {
+    routes() {
+      console.log(this.$router.options.routes);
+      return this.$router.options.routes;
+    }
+  },
   props: {
     value: Boolean
   },
@@ -42,12 +43,7 @@ export default {
   },
   data() {
     return {
-      drawer: true,
-      items: [
-        { title: "Home", icon: "mdi-home-city", to: "test" },
-        { title: "My Account", icon: "mdi-account", to: "dashboard" },
-        { title: "Users", icon: "mdi-account-group-outline" }
-      ]
+      drawer: true
     };
   }
 };

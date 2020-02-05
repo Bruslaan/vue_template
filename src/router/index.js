@@ -16,14 +16,7 @@ const routes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('../views/Home'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
-    },
-    {
-      path: '/test',
-      name: 'Form',
-      component: () => import('../views/test'),
-      meta: { title: 'Form', icon: 'form' }
-
+      meta: { title: 'Dashboard', icon: 'mdi-home-city' }
     },
     ]
   },
@@ -36,7 +29,7 @@ const routes = [
         path: 'index',
         name: 'Form',
         component: () => import('../views/test'),
-        meta: { title: 'Form', icon: 'form' }
+        meta: { title: 'Form', icon: 'mdi-home-city' }
       }
     ]
   },
